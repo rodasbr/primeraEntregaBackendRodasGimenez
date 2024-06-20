@@ -1,0 +1,29 @@
+[
+  {
+    "id": 2,
+    "title": "buzo",
+    "description": "unisex talles s, m y l",
+    "price": 800,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png",
+    "code": "ABC127",
+    "stock": 17
+  },
+  {
+    "id": 3,
+    "title": "remera",
+    "description": "unisex talles s, m y l",
+    "price": 800,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png",
+    "code": "ABC127",
+    "stock": 15
+  },
+  {
+    "id": 3,
+    "title": "metanol",
+    "description": "combustible",
+    "price": 800,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png",
+    "code": "ABC127",
+    "stock": 15
+  }
+]
