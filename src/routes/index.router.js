@@ -1,10 +1,15 @@
-import productsRouter from "./product.router.js";
-import cartsRouter from "./cart.router.js";
+import productsRoutes from "./products.routes.js";
+import cartsRoutes from "./carts.routes.js";
 import { Router } from "express";
 
 const router = Router();
 
-router.use("/products", productsRouter);
-router.use("/carts", cartsRouter);
+router.use("/products", productsRoutes);
+router.use("/carts", cartsRoutes);
+
+// Ruta de prueba
+router.get("/", (req, res) => {
+  res.send("Ruta principal funcionando");
+});
 
 export default router;

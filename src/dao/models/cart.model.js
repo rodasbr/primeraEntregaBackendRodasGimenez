@@ -1,14 +1,21 @@
 import mongoose from "mongoose";
 
-const cartCollection = "carts"; // Nombre de la colección
+const cartCollection = "carts";
 
-// Modelo de Schema
 const cartSchema = new mongoose.Schema({
   products: {
-    type: Array,
+    type: [
+      {
+        product: { type: mongoose.Schema.Types.ObjectId, ref: "products" },
+        quantity: Number,
+      },
+    ],
     default: [],
   },
 });
 
-// Exportamos el modelo que vamos a utilizar
+cartSchema.pre("findOne", function () {
+  this.populate("products.product");
+});
+
 export const cartModel = mongoose.model(cartCollection, cartSchema);

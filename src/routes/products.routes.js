@@ -1,13 +1,40 @@
 import { Router } from "express";
 import productDao from "../dao/product.dao.js";
-import { checkProductData } from "../middlewares/checkProductData.middleware.js";
+import { checkProductData } from "../middleware/checkProductData.middleware.js";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const products = await productDao.getAll();
+  try {
+    const { limit, page, sort, category, status } = req.query;
 
-  res.status(200).json({ status: "ok", products });
+    const options = {
+      limit: limit || 10,
+      page: page || 1,
+      sort: {
+        price: sort === "asc" ? 1 : -1,
+      },
+    };
+
+    if (status) {
+      const products = await productDao.getAll({ status }, options);
+      return res.status(200).json({ status: "ok", products });
+    }
+
+    if (category) {
+      const products = await productDao.getAll({ category }, options);
+      return res.status(200).json({ status: "ok", products });
+    }
+
+    const products = await productDao.getAll({}, options);
+
+    res.status(200).json({ status: "ok", products });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({ status: "error", msg: "Error interno del servidor" });
+  }
 });
 
 router.get("/:pid", async (req, res) => {

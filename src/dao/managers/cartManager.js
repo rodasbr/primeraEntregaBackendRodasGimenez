@@ -34,7 +34,7 @@ const getCartById = async (cid) => {
 const addProductToCart = async (cid, pid) => {
   await getCars();
   const cart = await getCartById(cid);
-  // Modificar para chequear que el producto existe y aumentar la quantity
+
   const product = {
     product: pid,
     quantity: 1,

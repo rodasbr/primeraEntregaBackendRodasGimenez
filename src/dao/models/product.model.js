@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
-const productCollection = "products"; // Nombre de la colección
+const productCollection = "products";
 
-// Modelo de Schema
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true, // Dato requerido
+    required: true,
   },
   description: {
     type: String,
   },
   code: {
     type: String,
-    unique: true, // Dato único
+    unique: true,
   },
   stock: {
     type: Number,
@@ -27,7 +27,7 @@ const productSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    default: 0, // Valor por defecto
+    default: 0,
   },
   thumbnail: {
     type: Array,
@@ -35,5 +35,6 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-// Exportamos el modelo que vamos a utilizar
+productSchema.plugin(mongoosePaginate);
+
 export const productModel = mongoose.model(productCollection, productSchema);
